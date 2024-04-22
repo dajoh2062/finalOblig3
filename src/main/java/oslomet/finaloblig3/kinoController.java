@@ -26,6 +26,10 @@ public class kinoController {
     public void slettalle(){
         rep.slettAlle();
     }
+    @GetMapping("/slettEnBilett")
+    public void slettEnBilett(int id){
+        rep.slettEnBilett(id);
+    }
 
 
 

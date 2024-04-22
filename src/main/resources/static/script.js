@@ -107,14 +107,13 @@ $("#kjop").click(function kjopbilett() {
     const antall = document.getElementById("antall").value;
 
 
-    if (!film || !fornavn || !etternavn || !telefon || !email || !antall) {
+    if (!fornavn || !etternavn || !telefon || !email || !antall|| film==="Velg Film"||!film) {
         alert("Vennligst fyll ut alle feltene");
+
 
     }
 
-
-//skjekker etter error//
-    if (fornavnErFeil===false && etternavnErFeil===false && telefonErFeil===false && emailErFeil===false && antallErFeil===false) {
+    else {  if (fornavnErFeil===false && etternavnErFeil===false && telefonErFeil===false && emailErFeil===false && antallErFeil===false) {
         let bilett = {
             film: film,
             fornavn: fornavn,
@@ -127,7 +126,9 @@ $("#kjop").click(function kjopbilett() {
             visbiletter();
             tomfelter();
             fjernError();
-        });
+        });}
+
+
 
 
     }})
@@ -138,9 +139,13 @@ function visbiletter() {
 
 
     $.get("/hentBilett", function (retur){
-        let ut="<table class='table table-striped'><tr><td><b>Film</b></td><td><b>Fornavn</b>></td><td><b>Etternavn</b></td><td><b>Telefon</b></td><td><b>Epost</b></td><td><b>Antall</b></td><td></td><td></td></tr>"
+        let ut="<table class='table table-striped'><tr><td><b>Film</b></td><td><b>Fornavn</b>" +
+            "</td><td><b>Etternavn</b></td><td><b>Telefon</b></td><td><b>Epost</b></td><td><b>Antall</b></td><td></td><td></td></tr>"
         for(let b of retur){
-            ut += "<tr><td>" + b.film + "</td><td>" + b.fornavn + "</td><td>" + b.etternavn + "</td><td>" + b.telefonnummer + "</td><td>" + b.email + "</td><td>" + b.antall + "</td><td><button>Button 1</button></td><td><button>Button 2</button></td></tr>";
+            ut += "<tr><td>" + b.film + "</td><td>" + b.fornavn + "</td><td>" + b.etternavn +
+                "</td><td>" + b.telefonnummer + "</td><td>" + b.email + "</td><td>" + b.antall + "</td>" +
+                "<td><button class='btn btn-primary'>Endre</button></td><td><button onclick='slettEnBilett(b.id)' class='btn btn-danger'>Slett</button></td></tr>";
+
 
         }
 
@@ -153,6 +158,12 @@ function visbiletter() {
     })
 
 }
+function slettEnBilett (id){
+    $.get("/slettEnBilett?id="+id, function (){
+        window.location.href="/";
+    })
+}
+
 //Funksjon som gjoer strengene tomme//
 function tomfelter() {
     document.getElementById("antall").value = "";

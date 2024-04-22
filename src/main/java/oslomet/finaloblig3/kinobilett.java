@@ -1,8 +1,15 @@
 package oslomet.finaloblig3;
 
 public class kinobilett {
+    private int id;
     private String film, fornavn, etternavn, telefonnummer, email;
     private int antall;
+    public void setId(int id){
+        this.id=id;
+    }
+    public int getID(){
+        return id;
+    }
 
     public String getFilm() {
         return film;
@@ -52,7 +59,7 @@ public class kinobilett {
         this.antall = antall;
     }
 
-    public kinobilett(String film, String fornavn, String etternavn, String telefonnummer, String email, int antall) {
+    public kinobilett(int id, String film, String fornavn, String etternavn, String telefonnummer, String email, int antall) {
         this.film = film;
         this.fornavn = fornavn;
         this.etternavn = etternavn;
