@@ -1,6 +1,7 @@
 package oslomet.finaloblig3;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,18 +11,20 @@ import java.util.List;
 
 @RestController
 public class kinoController {
-    private List<kinobilett> biletter = new ArrayList<>();
+    @Autowired
+    private kinoRepository rep;
+
     @PostMapping("/lagreBilett")
     public void lagre (kinobilett bilett){
-        biletter.add(bilett);
+        rep.lagrebilett(bilett);
     }
     @GetMapping("/hentBilett")
     public List<kinobilett> retur (){
-        return biletter;
+        return rep.hentBilett();
     }
     @GetMapping("/slettAlle")
     public void slettalle(){
-        biletter.clear();
+        rep.slettAlle();
     }
 
 
