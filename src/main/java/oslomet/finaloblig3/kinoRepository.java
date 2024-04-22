@@ -30,7 +30,8 @@ public class kinoRepository {
         db.update(sql);
     }
     public void slettEnBilett(int id){
-        String sql="DELETE FROM KUNDE WHERE id=?";
+        String sql="DELETE FROM kinobilett WHERE id=?";
         db.update(sql,id);
     }
 }
+

@@ -144,7 +144,7 @@ function visbiletter() {
         for(let b of retur){
             ut += "<tr><td>" + b.film + "</td><td>" + b.fornavn + "</td><td>" + b.etternavn +
                 "</td><td>" + b.telefonnummer + "</td><td>" + b.email + "</td><td>" + b.antall + "</td>" +
-                "<td><button class='btn btn-primary'>Endre</button></td><td><button onclick='slettEnBilett(b.id)' class='btn btn-danger'>Slett</button></td></tr>";
+                "<td><button class='btn btn-primary'>Endre</button></td><td><button onclick='slettEnBilett("+b.id+")' class='btn btn-danger'>Slett</button></td></tr>";
 
 
         }
