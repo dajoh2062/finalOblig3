@@ -79,7 +79,7 @@ $("#email").change(function emailError(){
 let antallErFeil = true;
 $("#antall").change(function antallError(){
     const antall = document.getElementById("antall").value;
-    if (antall>0 || antall<=15) {
+    if (antall>0 && antall<=15) {
 
         document.getElementById("antallError").textContent="";
         antallErFeil = false;
@@ -135,33 +135,20 @@ $("#kjop").click(function kjopbilett() {
 
 //viser bilettene i en uordnet liste //
 function visbiletter() {
-    const billetListe = document.getElementById("biletter");
-    billetListe.innerHTML = "";
 
-    $.get("/hentBilett", function (biletter){
 
-        for (let indeks = 0; indeks < biletter.length; indeks++) {
-            const bilett = biletter[indeks];
+    $.get("/hentBilett", function (retur){
+        let ut="<table class='table table-striped'><tr><td><b>Film</b></td><td><b>Fornavn</b>></td><td><b>Etternavn</b></td><td><b>Telefon</b></td><td><b>Epost</b></td><td><b>Antall</b></td><td></td><td></td></tr>"
+        for(let b of retur){
+            ut += "<tr><td>" + b.film + "</td><td>" + b.fornavn + "</td><td>" + b.etternavn + "</td><td>" + b.telefonnummer + "</td><td>" + b.email + "</td><td>" + b.antall + "</td><td><button>Button 1</button></td><td><button>Button 2</button></td></tr>";
 
-            const li = document.createElement("li");
-            li.textContent =
-                "Billett" +
-                (indeks + 1) +
-                ": " +
-                bilett.film +
-                " - " +
-                bilett.fornavn +
-                " " +
-                bilett.etternavn +
-                " (" +
-                bilett.email +
-                ", +47 " +
-                bilett.telefonnummer +
-                ") antall: " +bilett.antall
-            ;
-            li.classList.add("list-group-item");
-            billetListe.appendChild(li);
         }
+
+        ut+="</table>"
+        $("#output").html(ut);
+        $("input").val("");
+
+
 
     })
 
