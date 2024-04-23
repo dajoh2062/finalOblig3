@@ -8,36 +8,70 @@
 
 </head>
 <body>
-<form class="form">
-    <input type="hidden" id="id"/>
-    <div class="form-group">
-        <label>Navn</label>
-        <input type="text" id="antall"/>
-    </div>
-    <div class="form-group">
-        <label>Adresse</label>
-        <input type="text" id="fornavn"/>
-    </div>
-    <div class="form-group">
-        <label>Adresse</label>
-        <input type="text" id="etternavn"/>
-    </div>
-    <div class="form-group">
-        <label>Adresse</label>
-        <input type="text" id="telefon"/>
-    </div>
-    <div class="form-group">
-        <label>Adresse</label>
-        <input type="text" id="adresse"/>
-    </div>
-    <div class="form-group">
-        <label>Adresse</label>
-        <input type="text" id="adresse"/>
-    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+        <h2>Endre bilett</h2>
+        <br>
+        <form class="form">
+            <label for="velgFilm">Film: </label>
+        <select id="velgFilm" class="form-select form-select-lg mb-3" >
+            <option disabled selected>Velg Film</option>
+            <option>Shawshank redemption</option>
+            <option>Drive</option>
+            <option>The Silence of the Lambs</option>
+        </select>
+        <br><br>
 
-    <div class="form-group">
-        <input type="button" value="Endre" class="btn btn-primary" onclick="endreKunden()"/>
+        <div>
+            <!-- antall biletter, 1 eller større -->
+            <label for="antall"><b>Antall:</b></label>
+            <input class="form-control" type="number" id="antall" min="1" max="15" >
+            <span class="text-danger" id="antallError"></span>
+        </div>
+        <br>
+
+        <div>
+            <!-- Fornavn input med responsiv validering -->
+            <label for="fornavn"><b>Fornavn:</b></label>
+            <input class="form-control" type="text" id="fornavn" >
+            <span class="text-danger" id="fornavnError" ></span>
+        </div>
+        <br>
+
+        <div>
+            <!-- etternavn input med responsiv validering -->
+            <label for="etternavn"><b>Etternavn:</b></label>
+            <input class="form-control" type="text" id="etternavn"  >
+            <span class="text-danger" id="etternavnError" ></span>
+        </div>
+        <br>
+
+        <div>
+            <!-- telefon input med responsiv validering -->
+            <label for="telefon"><b>Telefonnummer:</b></label>
+            <input class="form-control" type="text" id="telefon" >
+            <span class="text-danger" id="telefonError" ></span>
+        </div>
+        <br>
+
+        <div>
+            <!-- email input med responsiv validering -->
+            <label for="email"><b>Email:</b></label>
+            <input class="form-control" type="text" id="email">
+            <span class="text-danger" id="emailError" ></span>
+        </div>
+            <br>
+        <div class="form-group">
+            <input type="button" value="Endre" class="btn btn-primary" onclick="endreKunden()"/>
+        </div>
+        </form>
+        </div>
+        <div class="col-md-4"></div>
     </div>
+</div>
+
 </form>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="endreBilett.js"></script>
