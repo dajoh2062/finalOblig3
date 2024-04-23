@@ -13,7 +13,7 @@ $(function(){
     });
 });
 
-function endreBiletten() {
+$("#endreBiletten").click(function () {
     const bilett = {
         id : $("#id").val(),
         film : $("#velgFilm").val(),
@@ -23,8 +23,9 @@ function endreBiletten() {
         telefonnummer : $("#telefon").val(),
         email : $("#email").val()
     }
+
     $.post("/endreEnBilett",bilett,function(){
-        window.location.href = 'index.html';
+        window.location.href = '/';
     });
-}
+})
 

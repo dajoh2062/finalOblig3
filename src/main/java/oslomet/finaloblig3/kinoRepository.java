@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class kinoRepository {
@@ -33,5 +34,20 @@ public class kinoRepository {
         String sql="DELETE FROM kinobilett WHERE id=?";
         db.update(sql,id);
     }
+
+    public kinobilett hentEnBilett(int id){
+        Object[] param = new Object[1];
+        param[0]=id;
+        String sql = "Select * FROM kinobilett where id=?";
+        kinobilett bilett=db.queryForObject(sql, param, BeanPropertyRowMapper.newInstance(kinobilett.class));
+        return bilett;
+
+    }
+
+    public void endreEnBilett(kinobilett bilett){
+        String sql = "UPDATE kinobilett SET film=?, antall=?, fornavn=?, etternavn=?, telefonnummer=?, email=? where id=+";
+        db.update(sql,bilett.getFilm(),bilett.getAntall(),bilett.getFornavn(),bilett.getEtternavn(), bilett.getTelefonnummer(), bilett.getEmail(), bilett.getID());
+    }
+
 }
 

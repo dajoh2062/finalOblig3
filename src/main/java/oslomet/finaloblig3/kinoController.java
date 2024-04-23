@@ -30,6 +30,14 @@ public class kinoController {
     public void slettEnBilett(int id){
         rep.slettEnBilett(id);
     }
+    @GetMapping("/hentEnBilett")
+    public kinobilett bilett(int id){
+        return rep.hentEnBilett(id);
+    }
+    @PostMapping("/endreEnBilett")
+    public void endreEnBilett(kinobilett bilett){
+        rep.endreEnBilett(bilett);
+    }
 
 
 
