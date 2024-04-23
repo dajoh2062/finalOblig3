@@ -1,21 +1,29 @@
 $(function(){
 
     const id = window.location.search.substring(1);
-    const url = "/hentEnKunde?"+id;
-    $.get(url,function(kunde){
-        $("#id").val(kunde.id);
-        $("#navn").val(kunde.navn);
-        $("#adresse").val(kunde.adresse);
+    const url = "/hentEnBilett?"+id;
+    $.get(url,function(bilett){
+        $("#id").val(bilett.id);
+        $("#velgFilm").val(bilett.film);
+        $("#antall").val(bilett.antall)
+        $("#fornavn").val(bilett.fornavn);
+        $("#etternavn").val(bilett.etternavn);
+        $("#telefon").val(bilett.telefonnummer);
+        $("#email").val(bilett.email);
     });
 });
 
-function endreKunden() {
-    const kunde = {
+function endreBiletten() {
+    const bilett = {
         id : $("#id").val(),
-        navn : $("#navn").val(),
-        adresse : $("#adresse").val()
+        film : $("#velgFilm").val(),
+        antall : $("#antall").val(),
+        fornavn : $("#fornavn").val(),
+        etternavn : $("#etternavn").val(),
+        telefonnummer : $("#telefon").val(),
+        email : $("#email").val()
     }
-    $.post("/endreEnKunde",kunde,function(){
+    $.post("/endreEnBilett",bilett,function(){
         window.location.href = 'index.html';
     });
 }
