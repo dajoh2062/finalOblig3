@@ -45,9 +45,10 @@ public class kinoRepository {
     }
 
     public void endreEnBilett(kinobilett bilett){
-        String sql = "UPDATE kinobilett SET film=?, antall=?, fornavn=?, etternavn=?, telefonnummer=?, email=? where id=+";
-        db.update(sql,bilett.getFilm(),bilett.getAntall(),bilett.getFornavn(),bilett.getEtternavn(), bilett.getTelefonnummer(), bilett.getEmail(), bilett.getID());
+        String sql = "UPDATE kinobilett SET film=?, antall=?, fornavn=?, etternavn=?, telefonnummer=?, email=? WHERE id=?";
+        db.update(sql, bilett.getFilm(), bilett.getAntall(), bilett.getFornavn(), bilett.getEtternavn(), bilett.getTelefonnummer(), bilett.getEmail(), bilett.getID());
     }
+
 
 }
 
