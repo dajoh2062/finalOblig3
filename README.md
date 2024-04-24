@@ -8,3 +8,5 @@ Nye funksjoner som er implementert i oblig 3 er at bilettene blir lagret på h2 
 Andre funksjoner er å kunne endre og slette enkelt biletter, hvor endringen av biletter har samme krav til input som ved oppretting av ny bilett.
 Alle endringer til bilettene blir oppdatert i databasen.
 bilettene blir sortert på etternavn, også etter å ha endret en bilett.
+Lenke til gjennomgang på youtube:
+https://youtu.be/wzfEfMT1OEc
